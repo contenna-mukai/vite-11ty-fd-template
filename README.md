@@ -1,4 +1,4 @@
-# vite-11ty-template
+# vite-11ty-fd-template
 
 ## Usage
 
