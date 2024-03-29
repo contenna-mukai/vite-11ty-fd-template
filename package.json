@@ -1,0 +1,42 @@
+{
+	"private": true,
+	"scripts": {
+		"build": "npm run clean && npm run build:vite && prettier 'dist/**/*.html' --write --ignore-path null",
+		"build:vite": "vite build",
+		"clean": "rimraf dist",
+		"dev": "vite --host",
+		"format": "prettier . --write",
+		"lint": "npm run lint:style",
+		"lint:style": "stylelint **/*.{css,scss,sass,less,styl,vue,svelte}",
+		"serve": "vite preview --host"
+	},
+	"dependencies": {
+		"eslint": "^8.57.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-eslint-comments": "^3.2.0",
+		"eslint-plugin-regexp": "^2.4.0",
+		"sanitize.css": "^13.0.0",
+		"terser": "^5.29.2"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^2.0.1",
+		"autoprefixer": "^10.4.16",
+		"chalk": "^4.1.2",
+		"postcss": "^8.4.31",
+		"prettier": "^2.8.8",
+		"prettier-plugin-css-order": "^1.3.1",
+		"prettier-plugin-package": "^1.3.1",
+		"rimraf": "^5.0.5",
+		"sass": "^1.69.4",
+		"stylelint": "^15.11.0",
+		"stylelint-config-sass-guidelines": "^10.0.0",
+		"stylelint-order": "^6.0.3",
+		"vite": "^5.2.0",
+		"vite-plugin-checker": "^0.6.2"
+	},
+	"browserslist": "defaults, not ie 11, not Firefox ESR",
+	"volta": {
+		"node": "20.12.0"
+	}
+}

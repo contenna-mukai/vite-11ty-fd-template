@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>{{ title + ' | ' + site.name if title else site.name }}</title>
+		<meta name="description" content="{{ description }}">
+
+		<meta property="og:title" content="{{ title or site.name }}">
+		<meta property="og:type" content="{{ og.type or 'website' }}">
+		<meta property="og:image" content="{{ site.origin }}{{ '/ogp.jpg' | url }}">
+		<meta property="og:url" content="{{ site.origin }}{{ page.url | url }}">
+		<meta property="og:description" content="{{ description }}">
+		<meta property="og:locale" content="ja_JP">
+		<meta property="og:site_name" content="{{ site.name }}">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="generator" content="{{ eleventy.generator }}">
+
+		{% include 'pages/common/gtm-head.njk' %}
+
+		{% block styles %}
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap">
+		<link rel="stylesheet" href="/assets/styles/main.scss">
+		{% endblock %}
+
+		{% block scripts %}
+		<script type="module" src="/assets/scripts/main.js"></script>
+		{% endblock %}
+	</head>
+
+	<body>
+		{% include 'pages/common/gtm-body.njk' %}
+
+		<div class="c-page">
+			{% include 'components/header.njk' %}
+
+			<main class="c-main">
+				{% block content %}
+				{% endblock %}
+			</main>
+
+			{% include 'components/footer.njk' %}
+		</div>
+	</body>
+</html>
