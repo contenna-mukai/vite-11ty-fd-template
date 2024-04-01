@@ -1,0 +1,19 @@
+# 
+node_modules/*
+!/node_modules/fraction.js
+
+# build output
+plugins/
+public/
+dist/
+
+#
+package.json
+package-lock.json
+
+#
+.prettierrc.js
+.eslintrc.js
+.prettierrc.cjs
+vite.config.js
+env.d.ts
