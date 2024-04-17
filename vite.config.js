@@ -52,7 +52,7 @@ export default defineConfig({
 					let extType = path.extname(assetInfo.name);
 
 					if (/css$/.test(assetInfo.name)) {
-						return 'assets/styles/[name].[ext]';
+						return '[name].[ext]';
 					}
 
 					if (/jpg|jpeg|png|webp|svg|gif|avif/.test(extType)) {
