@@ -61,9 +61,18 @@ export default defineConfig({
 
 					return 'assets/[name].[ext]';
 				},
-				chunkFileNames: '[name].js',
+				chunkFileNames: 'assets/scripts/[name].js',
 				entryFileNames: '[name].js',
+				// If there are libraries that you want to put together, add them to the following manualChunks.
+				// manualChunks: {
+				// 	'vendors' : [
+				// 		''
+				// 	]
+				// }
 			},
+			external: [
+				'vendors'
+			],
 		},
 		emptyOutDir: false,
 		modulePreload: {
