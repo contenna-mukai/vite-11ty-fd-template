@@ -6,8 +6,9 @@
 		"clean": "rimraf dist",
 		"dev": "vite --host",
 		"format": "prettier . --write",
-		"lint": "npm run lint:style",
-		"lint:style": "stylelint **/*.{css,scss,sass,less,styl,vue,svelte}",
+		"lint": "npm run lint:eslint && npm run lint:style",
+		"lint:eslint": "eslint './src/**/*.{js,jsx}'",
+		"lint:style": "stylelint './src/**/*.{css,scss,sass,less,styl,vue,svelte}'",
 		"serve": "vite preview --host"
 	},
 	"dependencies": {
@@ -17,7 +18,8 @@
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-regexp": "^2.6.0",
 		"sanitize.css": "^13.0.0",
-		"terser": "^5.31.1"
+		"terser": "^5.31.1",
+		"vite-plugin-eslint": "^1.8.1"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^2.0.1",

@@ -3,7 +3,12 @@ import { defineConfig } from 'vite';
 import { globSync } from 'glob';
 import { fileURLToPath } from 'node:url';
 import { eleventyPlugin } from './plugins/vite-plugin-eleventy';
+import eslint from 'vite-plugin-eslint';
 import checkerPlugin from 'vite-plugin-checker';
+
+/**
+ * 各ファイル(JSとSCSS)情報の配列をまとめて、Objectにする設定
+ */
 
 const inputJsArray = globSync('src/assets/scripts/**/*.js', { ignore: ['node_modules/**', '**/modules/**', '**/html/**'] }).map((file) => {
 	return [path.relative('src', file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))];
@@ -13,9 +18,6 @@ const inputScssArray = globSync('src/assets/styles/**/*.scss', { ignore: ['src/a
 	return [path.relative('src', file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))];
 });
 
-/**
- * 各ファイル情報の配列をまとめて、Objectにする設定
- */
 const inputObj = Object.fromEntries(inputJsArray.concat(inputScssArray));
 
 export default defineConfig({
@@ -27,10 +29,8 @@ export default defineConfig({
 			stylelint: {
 				lintCommand: 'stylelint **/*.{css,scss,sass,less,styl,vue,svelte}',
 			},
-			// eslint: {
-			// 	lintCommand: 'eslint **/*.{js,jsx}',
-			// },
 		}),
+		eslint(),
 		eleventyPlugin({
 			baseDir: '/',
 		}),
@@ -64,15 +64,14 @@ export default defineConfig({
 				chunkFileNames: 'assets/scripts/[name].js',
 				entryFileNames: '[name].js',
 				// If there are libraries that you want to put together, add them to the following manualChunks.
+				
 				// manualChunks: {
 				// 	'vendors' : [
 				// 		''
 				// 	]
 				// }
 			},
-			external: [
-				'vendors'
-			],
+			external: ['vendors'],
 		},
 		emptyOutDir: false,
 		modulePreload: {
