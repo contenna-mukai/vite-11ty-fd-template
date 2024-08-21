@@ -18,14 +18,14 @@
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-regexp": "^2.6.0",
 		"sanitize.css": "^13.0.0",
-		"terser": "^5.31.3",
+		"terser": "^5.31.6",
 		"vite-plugin-eslint": "^1.8.1"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^2.0.1",
-		"autoprefixer": "^10.4.19",
+		"autoprefixer": "^10.4.20",
 		"chalk": "^4.1.2",
-		"postcss": "^8.4.39",
+		"postcss": "^8.4.41",
 		"prettier": "^3.3.3",
 		"prettier-plugin-css-order": "^2.1.2",
 		"prettier-plugin-package": "^1.4.0",
@@ -34,7 +34,7 @@
 		"stylelint": "^15.11.0",
 		"stylelint-config-sass-guidelines": "^10.0.0",
 		"stylelint-order": "^6.0.4",
-		"vite": "^5.3.4",
+		"vite": "^5.4.2",
 		"vite-plugin-checker": "^0.7.2"
 	},
 	"browserslist": "defaults, not ie 11, not Firefox ESR",
