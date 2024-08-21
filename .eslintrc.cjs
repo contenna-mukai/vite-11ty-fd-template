@@ -3,7 +3,7 @@
  */
 module.exports = {
 	root: true,
-	extends: ['airbnb-base', 'plugin:eslint-comments/recommended', 'plugin:regexp/recommended', "prettier"],
+	extends: ['airbnb-base', 'plugin:eslint-comments/recommended', 'plugin:regexp/recommended', 'prettier'],
 	env: {
 		browser: true,
 		es2022: true,
