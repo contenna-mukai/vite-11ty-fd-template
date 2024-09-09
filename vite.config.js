@@ -10,15 +10,15 @@ import checkerPlugin from 'vite-plugin-checker';
  * 各ファイル(JSとSCSS)情報の配列をまとめて、Objectにする設定
  */
 
-const inputJsArray = globSync('src/assets/scripts/**/*.js', { ignore: ['node_modules/**', '**/modules/**', '**/html/**'] }).map((file) => {
+const jsInfoArray = globSync('src/assets/scripts/**/*.js', { ignore: ['node_modules/**', '**/modules/**', '**/html/**'] }).map((file) => {
 	return [path.relative('src', file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))];
 });
 
-const inputScssArray = globSync('src/assets/styles/**/*.scss', { ignore: ['src/assets/styles/**/_*.scss'] }).map((file) => {
+const scssInfoArray = globSync('src/assets/styles/**/*.scss', { ignore: ['src/assets/styles/**/_*.scss'] }).map((file) => {
 	return [path.relative('src', file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))];
 });
 
-const inputObj = Object.fromEntries(inputJsArray.concat(inputScssArray));
+const assetsInfoArray = Object.fromEntries(jsInfoArray.concat(scssInfoArray));
 
 export default defineConfig({
 	root: 'src',
@@ -46,7 +46,7 @@ export default defineConfig({
 		assetsInlineLimit: 0,
 		outDir: '../dist/',
 		rollupOptions: {
-			input: inputObj,
+			input: assetsInfoArray,
 			output: {
 				assetFileNames: (assetInfo) => {
 					let extType = path.extname(assetInfo.name);
@@ -64,8 +64,8 @@ export default defineConfig({
 				chunkFileNames: 'assets/scripts/[name].js',
 				entryFileNames: '[name].js',
 				manualChunks(id) {
-					if (id.includes("node_modules") || (id.includes('modules/index') && !id.includes("node_modules"))) {
-						return "vendor";
+					if (id.includes('node_modules') || (id.includes('modules/index') && !id.includes('node_modules'))) {
+						return 'vendor';
 					}
 				},
 			},
